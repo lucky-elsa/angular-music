@@ -1,11 +1,45 @@
 .bar {
     position: fixed;
     bottom: 10px;
-    left: 5px;
-    right: 245px;
-    height: 70px;
+    left: 15px;
+    right: 250px;
+    height: 110px;
     background: white;
     -webkit-box-shadow: 0px 0px 15px -4px rgba(0, 0, 0, 0.3);
     box-shadow: 0px 0px 15px -4px rgba(0, 0, 0, 0.3);
-    border-radius: 30px;
+    border-radius: 20px;
+    .details {
+        background-color: black;
+        padding: 5px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        color: white;
+        height: 50px;
+        border-bottom: 2px solid red;
+    }
+    .img {
+        float: left;
+    }
+    .time {
+        float: right;
+        line-height: 40px;
+    }
+    .description {
+        // float: left;
+        // line-height: 40px;
+        // margin-left: 20px;
+        // max-width: 250px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+    @media only screen and (max-width:500px) {
+        .description {
+            width: 70px;
+            overflow: hidden;
+        }
+    }
+    .clear {
+        clear: both;
+    }
 }

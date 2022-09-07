@@ -1,1 +1,41 @@
-<div class="bar"></div>
+<div class="bar px-5">
+    <input class="ml-3 mt-3 w-100" type="range" min="0" [max]="duration" step="0.01" #seek (input)="setSeek(seek.value)" [value]="currentTime">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 py-2 d-none d-md-block">
+                <input class="ml-2 mt-3" type="range" min="0" max="1" step="0.01" #vol (input)="setVolume(vol.value)" [value]="volume">
+                <button class="btn">
+                    <span class="material-icons">volume_up</span>
+                </button>
+            </div>
+            <div class="col-md-6 col-9">
+                <div class="details">
+                    <div class="img">
+                        <img src="{{mydata.img || './assets/imgs/sample.jpg'}}" style="height: 40px;">
+                    </div>
+                    <div class="description">
+                        <div class="text-scroll">
+                            <div>
+                                <mark> {{mydata.label || 'No Song' }} - {{ mydata.author || 'No Author'}}</mark>
+                            </div>
+                        </div>
+                        <div class="time">
+                            <div>{{readCurrentTime}}/{{readDuration}}</div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-3 py-3">
+                <div class="btn-group">
+                    <button class="btn" (click)="next()" [disabled]="isEnd()"><span class="material-icons">skip_next</span></button>
+                    <button class="btn" *ngIf="isPlay" (click)="pause()"><span class="material-icons">pause</span></button>
+                    <button class="btn" *ngIf="!isPlay" (click)="play()"><span class="material-icons">play_arrow</span></button>
+                    <button class="btn" (click)="previous()" [disabled]="isStart()"><span class="material-icons">skip_previous</span></button>
+                    <button class="btn d-none d-md-block" (click)="stop()" [disabled]="!isPlay"><span class="material-icons">stop</span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
