@@ -12,7 +12,6 @@ export class PlayBarComponent implements OnInit {
   currentTime:number = 50;
   readCurrentTime = '00:00';
   readDuration = '00:00';
-  volume = 0.5;
   mydata = {
     img: '',
     label: '',
@@ -40,14 +39,11 @@ for (let e of  inputs) {
       e.style.setProperty("--value", e.value)
   );
 }
-
   }
   setSeek(value:any){
     console.log(value);
   }
-  setVolume(value:any){
-    this.audio.volume = value;
-  }
+ 
   previous(){
 
   }
