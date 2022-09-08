@@ -1,7 +1,13 @@
-<section class="top-area py-5">
+<section class="top p-4">
+    <div class="">
+        <input type="search" placeholder="جستجو ... " name="searchKey" [(ngModel)]="searchKey" (ngModelChange)="doSearch($event)">
+    </div>
+</section>
+
+<section class="top-area py-4">
     <div class="container">
         <div class="row">
-            <h2>دسته بندی ها</h2>
+            <h2 class="mb-3">دسته بندی ها</h2>
             <div class="col-md-12">
                 <swiper [slidesPerView]="5" [spaceBetween]="15" (swiper)="onSwiper($event)" (slideChange)="onSlideChange()">
                     <ng-container *ngFor="let item of suggestedPlayLists">
@@ -27,9 +33,33 @@
 <section class="pb-5">
     <div class="container">
         <div class="row">
-            <h2>جدید ترین آهنگ ها</h2>
             <div class="col-md-12">
-
+                <h2>جدید ترین آهنگ ها</h2>
+                <table class="table">
+                    <tbody>
+                        <tr *ngFor="let item of newerMusicData; let i = index">
+                            <td>
+                                <p class="mt-2 mt-md-4">{{i+1}}</p>
+                            </td>
+                            <td><img class="mt-1 item-img" src="{{item.cover}}" alt="{{item.title}}">
+                            </td>
+                            <td>
+                                <p class="mt-2 mt-md-1 item-title">{{item.title}}</p>
+                                <p class="mb-1">{{item.artistName}}</p>
+                            </td>
+                            <td>
+                                <p class="mt-2 mt-md-4">{{item.durationStr}}</p>
+                            </td>
+                            <td>
+                                <p class="mt-2  mt-md-4">
+                                    {{item.like}} لایک</p>
+                            </td>
+                            <td>
+                                <a href="{{item.shareLink}}" target="_blank"><span class="mt-2 mt-md-4 material-icons">share</span></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
