@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MusicModel } from 'src/app/models/music.model';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-play-bar',
@@ -12,14 +14,9 @@ export class PlayBarComponent implements OnInit {
   currentTime:number = 50;
   readCurrentTime = '00:00';
   readDuration = '00:00';
-  mydata = {
-    img: '',
-    label: '',
-    author: ''
-  };
-
+  music : MusicModel | undefined;
   audio:any;
-  constructor() {
+  constructor(private data : DataService) {
     this.audio = new Audio();
    }
 
@@ -27,6 +24,10 @@ export class PlayBarComponent implements OnInit {
   ngOnInit():void{
     this.audio.src = "https://dl.nex1music.ir/1401/06/16/Tahdid,%20Winner%20&%203alibi%20-%20Mishnasi%20Maro.mp3?time=1662569811&filename=/1401/06/16/Tahdid,%20Winner%20&%203alibi%20-%20Mishnasi%20Maro.mp3";
     this.audio.load();
+
+     this.data.musicPlay.subscribe((res : any) => {
+      this.music = res;
+    });
 
 const inputs: NodeListOf<HTMLInputElement> = document.querySelectorAll('input');
 for (let e of  inputs) {
@@ -61,6 +62,9 @@ for (let e of  inputs) {
   play(){
     this.audio.play();
     this.isPlay = true;
+    setTimeout(()=>{
+      this.currentTime += 5;
+    }, 1000);
   }
   pause(){
     this.audio.pause();

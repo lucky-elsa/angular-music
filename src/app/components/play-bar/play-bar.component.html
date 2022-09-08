@@ -1,21 +1,22 @@
 <div class="bar px-5">
-    <input class="ml-3 mt-3 w-100 slider-progress" type="range" min="0" [max]="duration" step="0.01" #seek (input)="setSeek(seek.value)" [value]="currentTime">
+    <input class="ml-3 mt-3 w-100 slider-progress" type="range" min="0" [max]="[music?.duration]" step="0.01" #seek (input)="setSeek(seek.value)" [value]="currentTime">
     <div class="container px-0">
         <div class="row justify-content-center">
             <div class="col-md-8 col-9">
                 <div class="details">
                     <div class="img">
-                        <img src="{{mydata.img || './assets/imgs/sample.jpg'}}" style="height: 30px;">
+                        <img src="{{music?.cover || './assets/imgs/sample.jpg'}}" style="height: 30px;">
                     </div>
                     <div class="description">
                         <div class="text-scroll">
                             <div>
-                                <mark> {{mydata.label || 'No Song' }} - {{ mydata.author || 'No Author'}}</mark>
+                                <mark> {{music?.title || 'No Song' }} - {{ music?.artistName
+                                    || 'No Author'}}</mark>
                             </div>
                         </div>
                         <div class="clear"></div>
                         <div class="time">
-                            <div>{{readCurrentTime}}/{{readDuration}}</div>
+                            <div>{{readCurrentTime}}/{{music?.durationStr}}</div>
                         </div>
                     </div>
                 </div>

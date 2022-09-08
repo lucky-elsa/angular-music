@@ -2,7 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { MusicModel } from 'src/app/models/music.model';
 import { PlayListModel } from 'src/app/models/playList.model';
-import { MusicService } from 'src/app/servieces/music.service';
+import { DataService } from 'src/app/services/data.service';
+import { MusicService } from 'src/app/services/music.service';
 import SwiperCore from 'swiper';
 @Component({
   selector: 'app-home',
@@ -15,7 +16,7 @@ export class HomeComponent implements OnInit,OnDestroy  {
   suggestedPlayLists : PlayListModel[] = [];
   newerMusicData : MusicModel[] = [];
   searchKey: string = '';
-  constructor(private musicService: MusicService) { }
+  constructor(private musicService: MusicService, private data : DataService) { }
 
   ngOnInit(): void {
     this.getPlayList();
@@ -57,6 +58,9 @@ export class HomeComponent implements OnInit,OnDestroy  {
     }
   }
 
+  sendData(item: MusicModel){
+    this.data.update(item);
+  }
 
 
   ngOnDestroy(): void {

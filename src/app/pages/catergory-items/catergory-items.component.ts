@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { MusicModel } from 'src/app/models/music.model';
 import { PlayListModel } from 'src/app/models/playList.model';
-import { MusicService } from 'src/app/servieces/music.service';
+import { MusicService } from 'src/app/services/music.service';
 
 @Component({
   selector: 'app-catergory-items',
