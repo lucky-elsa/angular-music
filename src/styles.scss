@@ -1,3 +1,6 @@
+@import 'swiper/scss';
+@import 'swiper/scss/navigation';
+@import 'swiper/scss/pagination';
 @font-face {
     font-family: irsans;
     src: url(assets/fonts/IRANSansWebMedium.woff2);
@@ -5,4 +8,14 @@
 
 body {
     font-family: 'irsans', cursive;
+}
+
+input[type=range] {
+    direction: ltr !important;
+}
+
+button:hover,
+button:active,
+button:focus {
+    outline: none !important;
 }

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { SwiperModule } from 'swiper/angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -7,6 +8,8 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { PlayBarComponent } from './components/play-bar/play-bar.component';
 import { HomeComponent } from './pages/home/home.component';
 import { CatergoryItemsComponent } from './pages/catergory-items/catergory-items.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import { CatergoryItemsComponent } from './pages/catergory-items/catergory-items
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SwiperModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

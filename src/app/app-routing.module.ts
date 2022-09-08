@@ -5,7 +5,7 @@ import { HomeComponent } from './pages/home/home.component';
 
 const routes: Routes = [
   { path : '' , component : HomeComponent , pathMatch : 'full'},
-  { path : 'category/id' , component : CatergoryItemsComponent}
+  { path : 'category/:id' , component : CatergoryItemsComponent}
 ];
 
 @NgModule({

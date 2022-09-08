@@ -28,12 +28,25 @@ export class PlayBarComponent implements OnInit {
   ngOnInit():void{
     this.audio.src = "https://dl.nex1music.ir/1401/06/16/Tahdid,%20Winner%20&%203alibi%20-%20Mishnasi%20Maro.mp3?time=1662569811&filename=/1401/06/16/Tahdid,%20Winner%20&%203alibi%20-%20Mishnasi%20Maro.mp3";
     this.audio.load();
+
+const inputs: NodeListOf<HTMLInputElement> = document.querySelectorAll('input');
+for (let e of  inputs) {
+  setTimeout(() => {
+      e.style.setProperty("--value", e.value);
+  }, 2000);
+  e.style.setProperty("--min", e.min == "" ? "0" : e.min);
+  e.style.setProperty("--max", e.max == "" ? "100" : e.max);
+  e.addEventListener("input", () =>
+      e.style.setProperty("--value", e.value)
+  );
+}
+
   }
   setSeek(value:any){
     console.log(value);
   }
   setVolume(value:any){
-    console.log(value)
+    this.audio.volume = value;
   }
   previous(){
 

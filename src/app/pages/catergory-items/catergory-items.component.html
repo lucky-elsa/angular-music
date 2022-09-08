@@ -1,1 +1,39 @@
-<p>catergory-items works!</p>
+<section class="top p-4">
+    <div class="">
+        <input type="search" placeholder="جستجو ... " name="searchKey" [(ngModel)]="searchKey" (ngModelChange)="doSearch($event)">
+    </div>
+</section>
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>لیست آهنگ ها</h2>
+                <table class="table">
+                    <tbody>
+                        <tr *ngFor="let item of categoryData; let i = index">
+                            <td>
+                                <p class="mt-2 mt-md-4">{{i+1}}</p>
+                            </td>
+                            <td><img class="mt-1 item-img" src="{{item.cover}}" alt="{{item.title}}">
+                            </td>
+                            <td>
+                                <p class="mt-2 mt-md-1 item-title">{{item.title}}</p>
+                                <p class="mb-1">{{item.artistName}}</p>
+                            </td>
+                            <td>
+                                <p class="mt-2 mt-md-4">{{item.durationStr}}</p>
+                            </td>
+                            <td>
+                                <p class="mt-2  mt-md-4">
+                                    {{item.like}} لایک</p>
+                            </td>
+                            <td>
+                                <a href="{{item.shareLink}}" target="_blank"><span class="mt-2 mt-md-4 material-icons">share</span></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

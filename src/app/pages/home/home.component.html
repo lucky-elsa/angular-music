@@ -1,1 +1,36 @@
-<p>home works!</p>
+<section class="top-area py-5">
+    <div class="container">
+        <div class="row">
+            <h2>دسته بندی ها</h2>
+            <div class="col-md-12">
+                <swiper [slidesPerView]="5" [spaceBetween]="15" (swiper)="onSwiper($event)" (slideChange)="onSlideChange()">
+                    <ng-container *ngFor="let item of suggestedPlayLists">
+                        <ng-template swiperSlide>
+                            <div class="box">
+                                <div class="box-img">
+                                    <img src="{{ item?.cover ||'../../../assets/imgs/sample.jpg'}}" class="card-img" alt="{{item.title}}">
+                                </div>
+                                <div class="box-info">
+                                    <div class="box-links">
+                                        <a [routerLink]="['/category', item.id]">{{item.title}}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </ng-container>
+                </swiper>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="pb-5">
+    <div class="container">
+        <div class="row">
+            <h2>جدید ترین آهنگ ها</h2>
+            <div class="col-md-12">
+
+            </div>
+        </div>
+    </div>
+</section>
