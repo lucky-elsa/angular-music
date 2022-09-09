@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { MusicModel } from 'src/app/models/music.model';
 import { PlayListModel } from 'src/app/models/playList.model';
+import { DataService } from 'src/app/services/data.service';
 import { MusicService } from 'src/app/services/music.service';
 
 @Component({
@@ -14,19 +15,25 @@ export class CatergoryItemsComponent implements OnInit, OnDestroy {
   categorySubscription: Subscription | undefined;
   categoryData : MusicModel[] = [];
   searchKey: string = '';
-  constructor(private route: ActivatedRoute, private _musicService: MusicService) { }
+  isWait: boolean = true;
+  constructor(private route: ActivatedRoute, private _musicService: MusicService, private data: DataService) { }
 
   ngOnInit(): void {
     this.getCategrory();
   }
 
-  
+  sendData(item: MusicModel){
+    this.data.update(item);
+  }
+
+
   getCategrory() {
     const routeParams = this.route.snapshot.paramMap;
     const categroyIdFromRoute = Number(routeParams.get('id'));
     this.categorySubscription = this._musicService
       .getCategroyItems(categroyIdFromRoute).subscribe((res:any) => {
         this.categoryData = res.data;
+        this.isWait = false;
       });
   }
   doSearch(searchKey: string): void {

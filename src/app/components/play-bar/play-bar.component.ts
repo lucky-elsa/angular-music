@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { MusicModel } from 'src/app/models/music.model';
 import { DataService } from 'src/app/services/data.service';
 
@@ -9,14 +9,15 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class PlayBarComponent implements OnInit {
 
+  @ViewChild('input') input!: ElementRef;
   isPlay: boolean = false;
-  duration: number = 100;
+  isMusicMute: boolean = false;
   currentTime:number = 50;
   readCurrentTime = '00:00';
   readDuration = '00:00';
   music : MusicModel | undefined;
   audio:any;
-  constructor(private data : DataService) {
+  constructor(private data : DataService,private renderer: Renderer2) {
     this.audio = new Audio();
    }
 
@@ -24,53 +25,57 @@ export class PlayBarComponent implements OnInit {
   ngOnInit():void{
     this.audio.src = "https://dl.nex1music.ir/1401/06/16/Tahdid,%20Winner%20&%203alibi%20-%20Mishnasi%20Maro.mp3?time=1662569811&filename=/1401/06/16/Tahdid,%20Winner%20&%203alibi%20-%20Mishnasi%20Maro.mp3";
     this.audio.load();
-
+    this.currentTime = this.audio.currentTime;
      this.data.musicPlay.subscribe((res : any) => {
       this.music = res;
+      this.audio.src = res.hlsUrl;
+      // this.duration = this.audio.duration;
+      this.audio.load();
     });
 
-const inputs: NodeListOf<HTMLInputElement> = document.querySelectorAll('input');
-for (let e of  inputs) {
-  setTimeout(() => {
-      e.style.setProperty("--value", e.value);
-  }, 2000);
-  e.style.setProperty("--min", e.min == "" ? "0" : e.min);
-  e.style.setProperty("--max", e.max == "" ? "100" : e.max);
-  e.addEventListener("input", () =>
-      e.style.setProperty("--value", e.value)
-  );
-}
+    const input :NodeListOf<HTMLElement> = document.getElementsByName('input');
+      setTimeout(() => {
+        this.renderer.setStyle(this.input.nativeElement, '--value', this.audio.currentTime);
+      }, 2000);
+      this.renderer.setStyle(this.input.nativeElement, '--min', 0);
+      this.renderer.setStyle(this.input.nativeElement, '--max', this.audio.duration);
   }
+
   setSeek(value:any){
     console.log(value);
   }
  
   previous(){
-
+    this.audio.currentTime -=10;
   }
 
-  isStart(){
-    return true;
-  }
   next(){
-
+    this.audio.currentTime +=10;
   }  
 
   stop(){
-
+    this.audio.pause();
+    this.audio.currentTime = 0;
+    this.isPlay = false;
   }
   play(){
     this.audio.play();
     this.isPlay = true;
     setTimeout(()=>{
-      this.currentTime += 5;
+      this.audio.currentTime += 5;
     }, 1000);
   }
   pause(){
     this.audio.pause();
     this.isPlay = false;
   }
-  isEnd(){
-    return false;
+
+  muteToggle(){
+    if(this.isMusicMute){
+        this.audio.volume = 0;
+    }
+    else{
+      this.audio.volume = 1;
+    }
   }
 }

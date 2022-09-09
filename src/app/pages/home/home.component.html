@@ -4,12 +4,12 @@
     </div>
 </section>
 
-<section class="top-area py-4">
+<section class="top-area py-4" *ngIf="!isWait">
     <div class="container">
         <div class="row">
             <h2 class="mb-3">دسته بندی ها</h2>
             <div class="col-md-12">
-                <swiper [slidesPerView]="5" [spaceBetween]="15" (swiper)="onSwiper($event)" (slideChange)="onSlideChange()">
+                <swiper [slidesPerView]="5" [spaceBetween]="15">
                     <ng-container *ngFor="let item of suggestedPlayLists">
                         <ng-template swiperSlide>
                             <div class="box">
@@ -30,6 +30,9 @@
     </div>
 </section>
 
+<section class="p-5 text-center" *ngIf="isWait">
+    <img src="../../../assets/imgs/1487.gif" class="loading p-md-5">
+</section>
 <section class="pb-5">
     <div class="container">
         <div class="row">

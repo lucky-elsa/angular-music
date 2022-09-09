@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit,OnDestroy  {
   suggestedPlayLists : PlayListModel[] = [];
   newerMusicData : MusicModel[] = [];
   searchKey: string = '';
+  isWait: boolean = true;
   constructor(private musicService: MusicService, private data : DataService) { }
 
   ngOnInit(): void {
@@ -26,7 +27,7 @@ export class HomeComponent implements OnInit,OnDestroy  {
   getPlayList() {
     this.suggestedSubscription = this.musicService.getSuggestedPlayLists().subscribe((res:any) => {
       this.suggestedPlayLists = res.data;
-      // this.isWait = true;
+      this.isWait = false;
     });
   }
 
@@ -34,12 +35,6 @@ export class HomeComponent implements OnInit,OnDestroy  {
     this.newerMusicSubscription = this.musicService.getCategroyItems(4).subscribe((res:any)=>{
       this.newerMusicData = res.data;
     })
-  }
-  onSwiper([swiper]:any) {
-    console.log(swiper);
-  }
-  onSlideChange() {
-    console.log('slide change');
   }
 
   doSearch(searchKey: string): void {
