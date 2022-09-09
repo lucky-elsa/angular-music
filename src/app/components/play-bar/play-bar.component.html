@@ -22,8 +22,8 @@
                         <button *ngIf="!isPlay" (click)="play()"><span class="material-icons">play_arrow</span></button>
                         <button (click)="previous()" [disabled]="!isPlay"><span class="material-icons">skip_previous</span></button>
                         <button class="" (click)="isMusicMute = !isMusicMute;muteToggle()">
-                                <span [ngClass]="['btn-mute','material-icons']" *ngIf="!isMusicMute">volume_up</span>
-                                <span [ngClass]="['btn-unmute','material-icons']" *ngIf="isMusicMute">volume_off</span>
+                                <span [ngClass]="['material-icons']" *ngIf="!isMusicMute">volume_up</span>
+                                <span [ngClass]="['material-icons']" *ngIf="isMusicMute">volume_off</span>
                             </button>
 
 
