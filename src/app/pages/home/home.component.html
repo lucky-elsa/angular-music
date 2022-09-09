@@ -9,7 +9,7 @@
         <div class="row">
             <h2 class="mb-3">دسته بندی ها</h2>
             <div class="col-md-12">
-                <swiper [slidesPerView]="5" [spaceBetween]="15">
+                <swiper [config]="swiperConfig">
                     <ng-container *ngFor="let item of suggestedPlayLists;trackBy: coverTrackByFn;">
                         <ng-template swiperSlide>
                             <div class="box">
@@ -54,8 +54,7 @@
                                 <p class="mt-2 mt-md-4">{{item.durationStr}}</p>
                             </td>
                             <td>
-                                <p class="mt-2  mt-md-4">
-                                    {{item.like}} لایک</p>
+                                <p class="mt-2  mt-md-4 like-count">{{item.like}} لایک</p>
                             </td>
                             <td>
                                 <a href="{{item.shareLink}}" target="_blank"><span class="mt-2 mt-md-4 material-icons">share</span></a>

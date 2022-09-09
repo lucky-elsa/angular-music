@@ -1,4 +1,5 @@
 .bar {
+    // display: none;
     position: fixed;
     bottom: 10px;
     left: 15px;
@@ -8,14 +9,16 @@
     -webkit-box-shadow: 0px 0px 15px -4px rgba(0, 0, 0, 0.3);
     box-shadow: 0px 0px 15px -4px rgba(0, 0, 0, 0.3);
     border-radius: 20px;
+    padding-left: 2rem;
     .details {
-        background-color: black;
-        padding: 5px;
+        // padding: 5px;
+        // padding-left: 20px;
         margin-top: 10px;
-        margin-bottom: 10px;
-        color: white;
-        height: 40px;
-        border-bottom: 2px solid red;
+        margin-bottom: 20px;
+        color: #333;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
     .img {
         float: right;
@@ -25,22 +28,16 @@
         line-height: 30px;
     }
     .description {
-        // float: right;
-        // line-height: 40px;
-        // margin-left: 20px;
-        // max-width: 250px;
         display: flex;
         align-items: center;
-        justify-content: space-around;
+        justify-content: space-between;
+        width: 50%;
     }
     @media only screen and (max-width:500px) {
         .description {
-            width: 70px;
+            // width: 70px;
             overflow: hidden;
         }
-    }
-    .clear {
-        clear: both;
     }
 }
 
@@ -115,4 +112,19 @@ button {
     outline: none !important;
     border: none !important;
     background: none !important;
+}
+
+.bar .cover {
+    height: 90px !important;
+    border-radius: 0px 20px 20px 0px;
+}
+
+@media screen and (max-width:768px) {
+    .bar {
+        bottom: 70px;
+        left: 15px;
+        right: 15px;
+        height: 90px;
+        padding-left: 1rem;
+    }
 }

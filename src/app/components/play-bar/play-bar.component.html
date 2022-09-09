@@ -1,38 +1,33 @@
-<div class="bar px-5">
-    <input class="ml-3 mt-3 w-100 slider-progress" type="range" min="0" [max]="[music?.duration]" step="0.01" #input [value]="currentTime">
+<div class="bar">
     <div class="container px-0">
-        <div class="row justify-content-center">
-            <div class="col-md-8 col-9">
-                <div class="details">
-                    <div class="img">
-                        <img src="{{music?.cover || './assets/imgs/sample.jpg'}}" style="height: 30px;">
-                    </div>
-                    <div class="description">
-                        <div class="text-scroll">
-                            <div>
-                                <mark> {{music?.title || 'No Song' }} - {{ music?.artistName
-                                    || 'No Author'}}</mark>
-                            </div>
-                        </div>
-                        <div class="clear"></div>
-                        <div class="time">
-                            <div>{{readCurrentTime}}/{{music?.durationStr}}</div>
-                        </div>
-                    </div>
+        <div class="row">
+            <div class="col-2 col-md-1">
+                <div class="img">
+                    <img src="{{music?.cover || './assets/imgs/sample.jpg'}}" class="cover w-100">
                 </div>
             </div>
-            <div class="col-md-4 col-3 py-3 text-center">
-                <div class="btn-group">
-                    <button class="d-none d-md-block" (click)="stop()" [disabled]="!isPlay"><span class="material-icons">stop</span></button>
-                    <button (click)="next()" [disabled]="!isPlay"><span class="material-icons">skip_next</span></button>
-                    <button *ngIf="isPlay" (click)="pause()"><span class="material-icons">pause</span></button>
-                    <button *ngIf="!isPlay" (click)="play()"><span class="material-icons">play_arrow</span></button>
-                    <button (click)="previous()" [disabled]="!isPlay"><span class="material-icons">skip_previous</span></button>
-                    <button class="" (click)="isMusicMute = !isMusicMute;muteToggle()">
-                        <span [ngClass]="['btn-mute','material-icons']" *ngIf="!isMusicMute">volume_up</span>
-                        <span [ngClass]="['btn-unmute','material-icons']" *ngIf="isMusicMute">volume_off</span>
-                    </button>
+            <div class="col-10 col-md-11">
+                <div class="music-player mt-3">
+                    <input class="w-100 slider-progress" type="range" min="0" [max]="[music?.duration]" step="0.01" #input [value]="currentTime">
+                </div>
+                <div class="details pl-0 pr-3">
+                    <div class="description">
+                        <p class="mb-2">{{music?.title || 'No Song' }} - {{ music?.artistName || 'No Author'}}</p>
+                        <p class="mb-2 time d-none d-md-block">{{readCurrentTime}}/{{music?.durationStr}}</p>
+                    </div>
+                    <div class="btn-group text-center">
+                        <button (click)="stop()" [disabled]="!isPlay"><span class="material-icons">stop</span></button>
+                        <button (click)="next()" [disabled]="!isPlay"><span class="material-icons">skip_next</span></button>
+                        <button *ngIf="isPlay" (click)="pause()"><span class="material-icons">pause</span></button>
+                        <button *ngIf="!isPlay" (click)="play()"><span class="material-icons">play_arrow</span></button>
+                        <button (click)="previous()" [disabled]="!isPlay"><span class="material-icons">skip_previous</span></button>
+                        <button class="" (click)="isMusicMute = !isMusicMute;muteToggle()">
+                                <span [ngClass]="['btn-mute','material-icons']" *ngIf="!isMusicMute">volume_up</span>
+                                <span [ngClass]="['btn-unmute','material-icons']" *ngIf="isMusicMute">volume_off</span>
+                            </button>
 
+
+                    </div>
 
                 </div>
             </div>

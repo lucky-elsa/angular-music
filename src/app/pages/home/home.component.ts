@@ -57,6 +57,23 @@ export class HomeComponent implements OnInit,OnDestroy  {
     this.data.update(item);
   }
 
+  swiperConfig: any = {
+    slidesPerView: '5',
+    spaceBetween: 20,
+    scrollbar: { draggable: true },
+    breakpoints: {
+      320: {
+        slidesPerView: '2'
+      },
+      768: {
+        slidesPerView: '3'
+      },
+      1200: {
+        slidesPerView: '5'
+      }
+    }
+}
+
   
   coverTrackByFn(index:number) {
     return index; // or item.id
@@ -77,3 +94,4 @@ export class HomeComponent implements OnInit,OnDestroy  {
   }
 
 }
+

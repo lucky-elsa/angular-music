@@ -33,12 +33,17 @@ export class PlayBarComponent implements OnInit {
       this.audio.load();
     });
 
-    const input :NodeListOf<HTMLElement> = document.getElementsByName('input');
-      setTimeout(() => {
-        this.renderer.setStyle(this.input.nativeElement, '--value', this.audio.currentTime);
-      }, 2000);
-      this.renderer.setStyle(this.input.nativeElement, '--min', 0);
-      this.renderer.setStyle(this.input.nativeElement, '--max', this.audio.duration);
+    const inputs: NodeListOf<HTMLInputElement> = document.querySelectorAll('input[type="range"].slider-progress');
+    for (let e of inputs) {
+  setTimeout(() => {
+      e.style.setProperty("--value", e.value);
+  }, 2000);
+  e.style.setProperty("--min", e.min == "" ? "0" : e.min);
+  e.style.setProperty("--max", e.max == "" ? "100" : e.max);
+  e.addEventListener("input", () =>
+      e.style.setProperty("--value", e.value)
+  );
+}
   }
 
   setSeek(value:any){

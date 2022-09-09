@@ -118,3 +118,40 @@ aside p {
 .logo {
     text-align: center;
 }
+
+.bottom-navbar {
+    display: none;
+}
+
+@media screen and (max-width:768px) {
+    .bottom-navbar {
+        height: 60px;
+        box-shadow: 0 16px 38px -12px rgb(0 0 0 / 56%), 0 4px 25px 0px rgb(0 0 0 / 12%), 0 8px 10px -5px rgb(0 0 0 / 20%);
+        background-color: #fff;
+        overflow: hidden;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        display: flex;
+        flex-direction: row !important;
+        justify-content: space-around;
+        align-items: center;
+        padding: 0 2rem;
+    }
+    /* Style the links inside the navigation bar */
+    .bottom-navbar a {
+        color: #333;
+        text-align: center;
+        text-decoration: none;
+        font-size: 1rem;
+        margin-top: 0.5rem !important;
+        transition: all 300ms ease;
+    }
+    .bottom-navbar a.active,
+    .bottom-navbar a:hover {
+        // background-color: #04AA6D;
+        color: #7380ec;
+        margin-bottom: 5px;
+        filter: drop-shadow(0 0 0.75rem #7380ec);
+    }
+}
