@@ -10,7 +10,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { CatergoryItemsComponent } from './pages/catergory-items/catergory-items.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { NgxSpinnerModule } from "ngx-spinner";
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +25,9 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     SwiperModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    InfiniteScrollModule,
+    NgxSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

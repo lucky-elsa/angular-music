@@ -11,31 +11,37 @@
                 <section class="p-5 text-center" *ngIf="isWait">
                     <img src="../../../assets/imgs/1487.gif" class="loading p-md-5">
                 </section>
-                <table *ngIf="!isWait" class="table">
-                    <tbody>
-                        <tr *ngFor="let item of categoryData; let i = index">
-                            <td>
-                                <p class="mt-2 mt-md-4">{{i+1}}</p>
-                            </td>
-                            <td><img class="mt-1 item-img" (click)="sendData(item)" src="{{item.cover}}" alt="{{item.title}}">
-                            </td>
-                            <td>
-                                <p class="mt-2 mt-md-1 item-title" (click)="sendData(item)">{{item.title}}</p>
-                                <p class="mb-1" (click)="sendData(item)">{{item.artistName}}</p>
-                            </td>
-                            <td>
-                                <p class="mt-2 mt-md-4">{{item.durationStr}}</p>
-                            </td>
-                            <td>
-                                <p class="mt-2  mt-md-4">
-                                    {{item.like}} لایک</p>
-                            </td>
-                            <td>
-                                <a href="{{item.shareLink}}" target="_blank"><span class="mt-2 mt-md-4 material-icons">share</span></a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="search-results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()">
+                    <table *ngIf="!isWait" class="table">
+                        <tbody>
+                            <tr *ngFor="let item of categoryData;trackBy: trackByFn; let i = index">
+                                <td>
+                                    <p class="mt-2 mt-md-4">{{i+1}}</p>
+                                </td>
+                                <td><img class="mt-1 item-img" (click)="sendData(item)" src="{{item.cover}}" alt="{{item.title}}">
+                                </td>
+                                <td>
+                                    <p class="mt-2 mt-md-1 item-title" (click)="sendData(item)">{{item.title}}</p>
+                                    <p class="mb-1" (click)="sendData(item)">{{item.artistName}}</p>
+                                </td>
+                                <td>
+                                    <p class="mt-2 mt-md-4">{{item.durationStr}}</p>
+                                </td>
+                                <td>
+                                    <p class="mt-2  mt-md-4">
+                                        {{item.like}} لایک</p>
+                                </td>
+                                <td>
+                                    <a href="{{item.shareLink}}" target="_blank"><span class="mt-2 mt-md-4 material-icons">share</span></a>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="text-center" *ngIf="isScrolled">
+                    <img src="../../../assets/imgs/1484.gif" class="loading">
+                </div>
             </div>
         </div>
     </div>

@@ -10,7 +10,7 @@
             <h2 class="mb-3">دسته بندی ها</h2>
             <div class="col-md-12">
                 <swiper [slidesPerView]="5" [spaceBetween]="15">
-                    <ng-container *ngFor="let item of suggestedPlayLists">
+                    <ng-container *ngFor="let item of suggestedPlayLists;trackBy: coverTrackByFn;">
                         <ng-template swiperSlide>
                             <div class="box">
                                 <div class="box-img">
@@ -40,7 +40,7 @@
                 <h2>جدید ترین آهنگ ها</h2>
                 <table class="table">
                     <tbody>
-                        <tr *ngFor="let item of newerMusicData; let i = index">
+                        <tr *ngFor="let item of newerMusicData;trackBy: musicTrackByFn; let i = index">
                             <td>
                                 <p class="mt-2 mt-md-4">{{i+1}}</p>
                             </td>

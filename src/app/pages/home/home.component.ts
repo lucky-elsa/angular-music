@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit,OnDestroy  {
   }
 
   getNewerMusics(){
-    this.newerMusicSubscription = this.musicService.getCategroyItems(4).subscribe((res:any)=>{
+    this.newerMusicSubscription = this.musicService.getCategroyItems(4,10).subscribe((res:any)=>{
       this.newerMusicData = res.data;
     })
   }
@@ -57,10 +57,22 @@ export class HomeComponent implements OnInit,OnDestroy  {
     this.data.update(item);
   }
 
+  
+  coverTrackByFn(index:number) {
+    return index; // or item.id
+  }
+
+  musicTrackByFn(index:number) {
+    return index; // or item.id
+  }
+
 
   ngOnDestroy(): void {
     if (this.suggestedSubscription) {
       this.suggestedSubscription.unsubscribe();
+    }
+    if (this.newerMusicSubscription) {
+      this.newerMusicSubscription.unsubscribe();
     }
   }
 

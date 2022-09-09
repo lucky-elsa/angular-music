@@ -16,6 +16,8 @@ export class CatergoryItemsComponent implements OnInit, OnDestroy {
   categoryData : MusicModel[] = [];
   searchKey: string = '';
   isWait: boolean = true;
+  isScrolled: boolean = false;
+  currentPageSize: number = 10;
   constructor(private route: ActivatedRoute, private _musicService: MusicService, private data: DataService) { }
 
   ngOnInit(): void {
@@ -31,7 +33,7 @@ export class CatergoryItemsComponent implements OnInit, OnDestroy {
     const routeParams = this.route.snapshot.paramMap;
     const categroyIdFromRoute = Number(routeParams.get('id'));
     this.categorySubscription = this._musicService
-      .getCategroyItems(categroyIdFromRoute).subscribe((res:any) => {
+      .getCategroyItems(categroyIdFromRoute,this.currentPageSize).subscribe((res:any) => {
         this.categoryData = res.data;
         this.isWait = false;
       });
@@ -52,6 +54,16 @@ export class CatergoryItemsComponent implements OnInit, OnDestroy {
     }
   }
 
+  onScroll(){
+    console.log("ok")
+    this.isScrolled = true;
+    this.currentPageSize += 5;
+    this.getCategrory();
+  }
+
+  trackByFn(index:number) {
+    return index; // or item.id
+  }
 
   ngOnDestroy():void{
     this.categorySubscription?.unsubscribe();
