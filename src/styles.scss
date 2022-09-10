@@ -19,3 +19,16 @@ button:active,
 button:focus {
     outline: none !important;
 }
+
+ ::-webkit-scrollbar {
+    width: 3px;
+    height: 0;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #676767;
+}
+
+::-webkit-scrollbar-track {
+    background: #fff;
+}

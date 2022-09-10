@@ -64,6 +64,7 @@ aside .sidebar a.active:before {
 
 aside .sidebar a:hover {
     color: #7380ec;
+    cursor: pointer;
 }
 
 aside .sidebar a:hover span {
@@ -150,6 +151,7 @@ aside p {
     .bottom-navbar a.active,
     .bottom-navbar a:hover {
         // background-color: #04AA6D;
+        cursor: pointer;
         color: #7380ec;
         margin-bottom: 5px;
         filter: drop-shadow(0 0 0.75rem #7380ec);
