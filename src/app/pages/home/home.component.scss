@@ -84,6 +84,10 @@ li span {
 }
 
 @media only screen and (max-width: 480px) {
+    .box,
+    .box img {
+        height: 130px !important;
+    }
     .item-img {
         width: 35px;
     }

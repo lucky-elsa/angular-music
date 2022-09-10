@@ -25,7 +25,9 @@
                         "inlineStyleLanguage": "scss",
                         "assets": [
                             "src/favicon.ico",
-                            "src/assets"
+                            "src/assets",
+                            "src/manifest.webmanifest",
+                            "src/manifest.webmanifest"
                         ],
                         "styles": [
                             "node_modules/ngx-spinner/animations/ball-scale-multiple.css",
@@ -34,19 +36,21 @@
                         "scripts": [
                             "node_modules/video.js/dist/video.min.js",
                             "node_modules/videojs-contrib-hls/dist/videojs-contrib-hls.min.js"
-                        ]
+                        ],
+                        "serviceWorker": true,
+                        "ngswConfigPath": "ngsw-config.json"
                     },
                     "configurations": {
                         "production": {
                             "budgets": [{
                                     "type": "initial",
-                                    "maximumWarning": "500kb",
-                                    "maximumError": "1mb"
+                                    "maximumWarning": "5mb",
+                                    "maximumError": "5mb"
                                 },
                                 {
                                     "type": "anyComponentStyle",
-                                    "maximumWarning": "2kb",
-                                    "maximumError": "4kb"
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "2mb"
                                 }
                             ],
                             "fileReplacements": [{
@@ -94,7 +98,9 @@
                         "inlineStyleLanguage": "scss",
                         "assets": [
                             "src/favicon.ico",
-                            "src/assets"
+                            "src/assets",
+                            "src/manifest.webmanifest",
+                            "src/manifest.webmanifest"
                         ],
                         "styles": [
                             "src/styles.scss"
