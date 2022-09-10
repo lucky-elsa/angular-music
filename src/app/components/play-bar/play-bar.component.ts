@@ -9,7 +9,6 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class PlayBarComponent implements OnInit {
 
-  @ViewChild('input') input!: ElementRef;
   isPlay: boolean = false;
   isShowenBar: boolean = false;
   isMusicMute: boolean = false;
@@ -29,28 +28,16 @@ export class PlayBarComponent implements OnInit {
     this.currentTime = this.audio.currentTime;
      this.data.musicPlay.subscribe((res : any) => {
       this.music = res;
-      this.audio.src = res.hlsUrl;
       // this.duration = this.audio.duration;
       this.audio.load();
     });
-    this.data.isShowenBar.subscribe(data => this.isShowenBar = data);
-
-    const inputs: NodeListOf<HTMLInputElement> = document.querySelectorAll('input[type="range"].slider-progress');
-    for (let e of inputs) {
-  setTimeout(() => {
-      e.style.setProperty("--value", e.value);
-  }, 2000);
-  e.style.setProperty("--min", e.min == "" ? "0" : e.min);
-  e.style.setProperty("--max", e.max == "" ? "100" : e.max);
-  e.addEventListener("input", () =>
-      e.style.setProperty("--value", e.value)
-  );
-}
+    this.data.isShowenBar.subscribe((data)=>{
+      this.isShowenBar = data;
+      this.isPlay = data;
+    })
   }
+  
 
-  setSeek(value:any){
-    console.log(value);
-  }
  
   previous(){
     this.audio.currentTime -=10;

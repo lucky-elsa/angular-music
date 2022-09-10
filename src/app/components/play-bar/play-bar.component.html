@@ -7,9 +7,10 @@
                 </div>
             </div>
             <div class="col-10 col-md-11">
-                <div class="music-player">
-                    <input class="w-100 slider-progress" type="range" min="0" [max]="[music?.duration]" step="0.01" #input [value]="currentTime">
-                </div>
+
+
+                <!-- <input class="w-100 slider-progress" type="range" min="0" [max]="[music?.duration]" step="0.01" #input [value]="currentTime"> -->
+
                 <div class="details pl-0 pr-3">
                     <div class="description">
                         <p class="mb-2">{{music?.title || 'No Song' }} - {{ music?.artistName || 'No Author'}}</p>

@@ -41,73 +41,6 @@
     }
 }
 
-input[type="range"] {
-    height: 0.6rem;
-    -webkit-appearance: none;
-    // width: 100%;
-}
-
-
-/*progress support*/
-
-input[type="range"].slider-progress {
-    --range: calc(var(--max) - var(--min));
-    --ratio: calc((var(--value) - var(--min)) / var(--range));
-    --sx: calc(0.5 * 0.9em + var(--ratio) * (100% - 0.9em));
-}
-
-input[type="range"]:focus {
-    outline: none;
-}
-
-
-/*webkit*/
-
-input[type="range"]::-webkit-slider-thumb {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: #F2C94C;
-    border: 1px solid #333;
-    margin-top: -2px;
-    -webkit-appearance: none;
-}
-
-input[type="range"]::-webkit-slider-runnable-track {
-    height: 0.22em;
-    border-radius: 0.5em;
-    background: #efefef;
-    box-shadow: none;
-}
-
-input[type="range"].slider-progress::-webkit-slider-runnable-track {
-    background: linear-gradient(#333, #333) 0 / var(--sx) 100% no-repeat, #efefef;
-}
-
-
-/*mozilla*/
-
-input[type="range"]::-moz-range-thumb {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: #F2C94C;
-    border: 1px solid #333;
-    margin-top: -2px;
-}
-
-input[type="range"]::-moz-range-track {
-    height: max(calc(1em - 1px - 1px), 0px);
-    border-radius: 0.5em;
-    background: #efefef;
-    border: 1px solid #b2b2b2;
-    box-shadow: none;
-}
-
-input[type="range"].slider-progress::-moz-range-track {
-    background: linear-gradient(#333, #333) 0 / var(--sx) 100% no-repeat, #efefef;
-}
-
 button {
     outline: none !important;
     border: none !important;
@@ -125,7 +58,7 @@ button {
         bottom: 70px;
         left: 15px;
         right: 15px;
-        height: 90px;
+        height: 80px;
         padding-left: 1rem;
     }
 }
