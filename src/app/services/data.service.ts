@@ -27,10 +27,18 @@ export class DataService {
     }});
   musicPlay = this.musicPlay$.asObservable();
 
+
+  private isShowenBar$ = new BehaviorSubject<boolean>(false);
+  isShowenBar = this.isShowenBar$.asObservable();
+
   constructor() {}
 
 
   update(item: MusicModel) {
     this.musicPlay$.next(item);
+  }
+
+  changeBarStatus(){
+    this.isShowenBar$.next(true);
   }
 }

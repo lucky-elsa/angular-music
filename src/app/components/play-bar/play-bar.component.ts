@@ -11,6 +11,7 @@ export class PlayBarComponent implements OnInit {
 
   @ViewChild('input') input!: ElementRef;
   isPlay: boolean = false;
+  isShowenBar: boolean = false;
   isMusicMute: boolean = false;
   currentTime:number = 50;
   readCurrentTime = '00:00';
@@ -32,6 +33,7 @@ export class PlayBarComponent implements OnInit {
       // this.duration = this.audio.duration;
       this.audio.load();
     });
+    this.data.isShowenBar.subscribe(data => this.isShowenBar = data);
 
     const inputs: NodeListOf<HTMLInputElement> = document.querySelectorAll('input[type="range"].slider-progress');
     for (let e of inputs) {

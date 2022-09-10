@@ -55,7 +55,9 @@ export class HomeComponent implements OnInit,OnDestroy  {
 
   sendData(item: MusicModel){
     this.data.update(item);
+    this.data.changeBarStatus();
   }
+
 
   swiperConfig: any = {
     slidesPerView: '5',
