@@ -1,6 +1,8 @@
+import data from '../app.config.json';
+
 export const environment = {
   production: true,
-  apiUrl : 'https://api.navacloud.ir/api/v1/Home/GetSuggestedPlayLists?page=1&size=12',
+  baseUrl : data.APP_URL.BASE_API,
 
-  playlistUrl: 'https://api.navacloud.ir/api/v1/Search/PlayList?'
+  playlistUrl: data.APP_URL.PLAYLIST_API
 };

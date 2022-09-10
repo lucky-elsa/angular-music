@@ -1,0 +1,6 @@
+{
+    "APP_URL": {
+        "BASE_API": "https://api.navacloud.ir/api/v1/Home/GetSuggestedPlayLists?page=1&size=12",
+        "PLAYLIST_API": "https://api.navacloud.ir/api/v1/Search/PlayList?"
+    }
+}

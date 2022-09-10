@@ -2,11 +2,13 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-export const environment = {
-  production: false,
-  apiUrl : 'https://api.navacloud.ir/api/v1/Home/GetSuggestedPlayLists?page=1&size=12',
+import data from '../app.config.json';
 
-  playlistUrl: 'https://api.navacloud.ir/api/v1/Search/PlayList?'
+export const environment = {
+  production:false,
+  baseUrl : data.APP_URL.BASE_API,
+
+  playlistUrl: data.APP_URL.PLAYLIST_API
 };
 
 /*

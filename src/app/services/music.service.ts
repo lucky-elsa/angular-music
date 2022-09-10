@@ -9,7 +9,7 @@ export class MusicService {
 
   constructor(private _http: HttpClient) { }
 
-  suggestedPlayListsUrl = environment.apiUrl;
+  suggestedPlayListsUrl = environment.baseUrl;
   playlistUrl = environment.playlistUrl;
 
   getSuggestedPlayLists(){
