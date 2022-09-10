@@ -26,6 +26,7 @@ export class CatergoryItemsComponent implements OnInit, OnDestroy {
 
   sendData(item: MusicModel){
     this.data.update(item);
+    this.data.changeBarStatus();
   }
 
 

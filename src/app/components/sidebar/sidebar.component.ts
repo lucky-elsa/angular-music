@@ -7,23 +7,10 @@ import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/co
 })
 export class SidebarComponent implements OnInit {
 
-  isLoggedIn = true;
-  @ViewChild('aside') sidebar!: ElementRef;
-
-  constructor(private renderer: Renderer2) {}
+  constructor() {}
 
   ngOnInit(): void {
-    document.getElementById('close-btn')?.addEventListener('click', () => {
-      this.renderer.setStyle(this.sidebar.nativeElement, 'display', 'none');
-    });
-
-    document.getElementById('menu-btn')?.addEventListener('click', () => {
-      console.log('clicked');
-      this.renderer.setStyle(this.sidebar.nativeElement, 'display', 'flex');
-    });
+  
   }
 
-  onCloseMenu() {
-    this.renderer.setStyle(this.sidebar.nativeElement, 'display', 'none');
-  }
 }
