@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, Renderer2, ViewChild,AfterViewChecked} from '@angular/core';
+import { Component, OnInit, Renderer2} from '@angular/core';
 import { MusicModel } from 'src/app/models/music.model';
 import { DataService } from 'src/app/services/data.service';
 // import videojs from 'video.js';

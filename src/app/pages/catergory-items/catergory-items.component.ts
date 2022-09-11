@@ -56,7 +56,7 @@ export class CatergoryItemsComponent implements OnInit, OnDestroy {
   }
 
   onScroll(){
-    console.log("ok")
+    // console.log("ok")
     this.isScrolled = true;
     this.currentPageSize += 5;
     this.getCategrory();

@@ -13,9 +13,13 @@
     }
 }
 
-#menu-btn,
-#close-btn {
+#menu-btn {
     display: none;
+}
+
+button {
+    border: none;
+    background: transparent;
 }
 
 aside {
@@ -26,62 +30,62 @@ aside {
     right: 0;
     background-color: #F8F9FA;
     box-shadow: 0 16px 38px -12px rgb(0 0 0 / 56%), 0 4px 25px 0px rgb(0 0 0 / 12%), 0 8px 10px -5px rgb(0 0 0 / 20%);
+    .sidebar {
+        a {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            height: 3.2rem;
+            color: gray;
+            position: relative;
+            text-decoration: none;
+            span {
+                font-size: 1.2rem;
+                margin-right: 1rem;
+                transition: all 300ms ease;
+            }
+            &.active {
+                background: white;
+                color: #7380ec;
+                &:before {
+                    content: "";
+                    width: 3px;
+                    height: 100%;
+                    position: absolute;
+                    background: #7380ec;
+                }
+            }
+            &:hover {
+                color: #7380ec;
+                cursor: pointer;
+                span {
+                    margin-right: 1.5rem;
+                }
+            }
+        }
+        h4 {
+            font-weight: 500;
+            font-size: 1.1rem;
+            margin-right: 0.5rem;
+        }
+    }
+    p {
+        font-size: 0.9rem;
+    }
 }
 
-button {
-    border: none;
-    background: transparent;
+.logo {
+    text-align: center;
+    img {
+        width: 120px;
+    }
 }
 
-aside .sidebar a {
-    display: flex;
-    align-items: center;
-    gap: 1.2rem;
-    height: 3.2rem;
-    color: gray;
-    position: relative;
-    text-decoration: none;
+.bottom-navbar {
+    display: none;
 }
 
-aside .sidebar a span {
-    font-size: 1.2rem;
-    margin-right: 1rem;
-    transition: all 300ms ease;
-}
-
-aside .sidebar a.active {
-    background: white;
-    color: #7380ec;
-}
-
-aside .sidebar a.active:before {
-    content: "";
-    width: 3px;
-    height: 100%;
-    position: absolute;
-    background: #7380ec;
-}
-
-aside .sidebar a:hover {
-    color: #7380ec;
-    cursor: pointer;
-}
-
-aside .sidebar a:hover span {
-    margin-right: 1.5rem;
-}
-
-aside .sidebar h4 {
-    font-weight: 500;
-    font-size: 1.1rem;
-    margin-right: 0.5rem;
-}
-
-aside p {
-    font-size: 0.9rem;
-}
-
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
     .navbar {
         display: block;
     }
@@ -106,25 +110,9 @@ aside p {
             }
         }
     }
-    #menu-btn,
-    #close-btn {
+    #menu-btn {
         display: block;
     }
-}
-
-.logo img {
-    width: 120px;
-}
-
-.logo {
-    text-align: center;
-}
-
-.bottom-navbar {
-    display: none;
-}
-
-@media screen and (max-width:767px) {
     .bottom-navbar {
         height: 60px;
         box-shadow: 0 16px 38px -12px rgb(0 0 0 / 56%), 0 4px 25px 0px rgb(0 0 0 / 12%), 0 8px 10px -5px rgb(0 0 0 / 20%);
