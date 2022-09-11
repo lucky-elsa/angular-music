@@ -32,3 +32,30 @@ button:focus {
 ::-webkit-scrollbar-track {
     background: #fff;
 }
+
+.vjs-control-bar {
+    opacity: 1 !important;
+}
+
+.video-js .vjs-control-bar {
+    background: transparent !important;
+}
+
+.vjs-picture-in-picture-control .vjs-icon-placeholder,
+.vjs-fullscreen-control .vjs-icon-placeholder {
+    display: none !important;
+}
+
+.video-js .vjs-play-progress,
+.video-js .vjs-volume-level {
+    background: #7380ec !important;
+}
+
+.video-js .vjs-picture-in-picture-control,
+.video-js .vjs-fullscreen-control {
+    display: none !important;
+}
+
+.vjs-big-play-button {
+    display: none !important;
+}

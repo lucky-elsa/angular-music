@@ -9,48 +9,18 @@
     -webkit-box-shadow: 0px 0px 15px -4px rgba(0, 0, 0, 0.3);
     box-shadow: 0px 0px 15px -4px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
-    padding-left: 2rem;
-    .details {
-        // padding: 5px;
-        // padding-left: 20px;
-        margin-top: 10px;
-        margin-bottom: 20px;
-        color: #333;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-    .img {
-        float: right;
-    }
-    .time {
-        float: left;
-        line-height: 30px;
-    }
     .description {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 50%;
+        width: 20%;
+        color: #333;
     }
-    @media only screen and (max-width:500px) {
-        .description {
-            // width: 70px;
-            overflow: hidden;
-        }
+    .cover {
+        height: 80px !important;
+        width: 80px !important;
+        border-radius: 0px 10px 10px 0px;
     }
-}
-
-button {
-    outline: none !important;
-    border: none !important;
-    background: none !important;
-}
-
-.bar .cover {
-    height: 80px !important;
-    width: 80px !important;
-    border-radius: 0px 10px 10px 0px;
+    .audio {
+        width: 70%;
+    }
 }
 
 @media screen and (max-width:768px) {
@@ -59,12 +29,57 @@ button {
         left: 15px;
         right: 15px;
         height: 80px;
-        padding-left: 1rem;
+        .cover {
+            width: 100% !important;
+        }
+        .audio {
+            width: 50% !important;
+        }
+        .description {
+            overflow: hidden;
+            p {
+                font-size: 0.8rem;
+            }
+        }
     }
-    .btn-group span {
-        font-size: 20px !important;
-    }
-    .bar .cover {
-        width: 100% !important;
-    }
+}
+
+.video-js {
+    height: 20px !important;
+    width: 100% !important;
+    color: #333 !important;
+    background: transparent !important;
+}
+
+.vjs-has-started .vjs-control-bar,
+.vjs-audio-only-mode .vjs-control-bar {
+    display: flex !important;
+    /* visibility: visible; */
+    transition: unset !important;
+}
+
+.video-js .vjs-progress-control {
+    cursor: pointer;
+    flex: auto;
+    display: flex;
+    align-items: center;
+    min-width: 4em;
+    touch-action: none;
+}
+
+.video-js .vjs-control-bar {
+    display: none;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 9px;
+    background-color: none !important;
+}
+
+.dis-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

@@ -1,7 +1,8 @@
-import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, ViewChild,AfterViewChecked} from '@angular/core';
 import { MusicModel } from 'src/app/models/music.model';
 import { DataService } from 'src/app/services/data.service';
-
+// import videojs from 'video.js';
+declare var videojs: any;
 @Component({
   selector: 'app-play-bar',
   templateUrl: './play-bar.component.html',
@@ -9,67 +10,28 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class PlayBarComponent implements OnInit {
 
-  isPlay: boolean = false;
   isShowenBar: boolean = false;
-  isMusicMute: boolean = false;
-  currentTime:number = 50;
-  readCurrentTime = '00:00';
-  readDuration = '00:00';
   music : MusicModel | undefined;
-  audio:any;
+  private player: any;
   constructor(private data : DataService,private renderer: Renderer2) {
-    this.audio = new Audio();
    }
+
 
   // eslint-disable-next-line @angular-eslint/use-lifecycle-interface
   ngOnInit():void{
-    this.audio.src = "https://dl.nex1music.ir/1401/06/16/Tahdid,%20Winner%20&%203alibi%20-%20Mishnasi%20Maro.mp3?time=1662569811&filename=/1401/06/16/Tahdid,%20Winner%20&%203alibi%20-%20Mishnasi%20Maro.mp3";
-    this.audio.load();
-    this.currentTime = this.audio.currentTime;
-     this.data.musicPlay.subscribe((res : any) => {
-      this.music = res;
-      // this.duration = this.audio.duration;
-      this.audio.load();
-    });
+   
     this.data.isShowenBar.subscribe((data)=>{
       this.isShowenBar = data;
-      this.isPlay = data;
     })
-  }
-  
-
+    this.data.musicPlay.subscribe((res : any) => {
+      this.music = res;
+      if(this.isShowenBar ===true){
+        this.player = videojs(document.getElementById('audio'),{autoplay: true, controls: true, sources: [{ src: this.music?.hlsUrl , type: 'application/x-mpegURL' }]}, function onPlayerReady() {
+          this.play();
+      })
+      }
+    }); 
  
-  previous(){
-    this.audio.currentTime -=10;
-  }
+}
 
-  next(){
-    this.audio.currentTime +=10;
-  }  
-
-  stop(){
-    this.audio.pause();
-    this.audio.currentTime = 0;
-    this.isPlay = false;
-  }
-  play(){
-    this.audio.play();
-    this.isPlay = true;
-    setTimeout(()=>{
-      this.audio.currentTime += 5;
-    }, 1000);
-  }
-  pause(){
-    this.audio.pause();
-    this.isPlay = false;
-  }
-
-  muteToggle(){
-    if(this.isMusicMute){
-        this.audio.volume = 0;
-    }
-    else{
-      this.audio.volume = 1;
-    }
-  }
 }
