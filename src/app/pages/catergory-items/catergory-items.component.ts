@@ -25,6 +25,7 @@ export class CatergoryItemsComponent implements OnInit, OnDestroy {
   }
 
   sendData(item: MusicModel){
+    // behavior subject
     this.data.update(item);
     this.data.changeBarStatus();
   }
@@ -56,10 +57,10 @@ export class CatergoryItemsComponent implements OnInit, OnDestroy {
   }
 
   onScroll(){
-    // console.log("ok")
-    this.isScrolled = true;
-    this.currentPageSize += 5;
+    // manage pagination
+    this.currentPageSize +=10;
     this.getCategrory();
+    this.isScrolled = true;
   }
 
   trackByFn(index:number) {

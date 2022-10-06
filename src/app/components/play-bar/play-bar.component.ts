@@ -1,4 +1,4 @@
-import { Component, OnInit, Renderer2} from '@angular/core';
+import { Component, OnInit, Renderer2,AfterContentInit , AfterContentChecked } from '@angular/core';
 import { MusicModel } from 'src/app/models/music.model';
 import { DataService } from 'src/app/services/data.service';
 // import videojs from 'video.js';
@@ -8,7 +8,7 @@ declare var videojs: any;
   templateUrl: './play-bar.component.html',
   styleUrls: ['./play-bar.component.scss']
 })
-export class PlayBarComponent implements OnInit {
+export class PlayBarComponent implements OnInit ,AfterContentInit ,AfterContentChecked{
 
   isShowenBar: boolean = false;
   music : MusicModel | undefined;
@@ -25,13 +25,17 @@ export class PlayBarComponent implements OnInit {
     })
     this.data.musicPlay.subscribe((res : any) => {
       this.music = res;
-      if(this.isShowenBar ===true){
-        this.player = videojs(document.getElementById('audio'),{autoplay: true, controls: true, sources: [{ src: this.music?.hlsUrl , type: 'application/x-mpegURL' }]}, function onPlayerReady() {
-          this.play();
-      })
-      }
     }); 
  
 }
 
+ngAfterContentInit(){
+    this.player = videojs(document.getElementById('audio'),{autoplay: true, controls: true, sources: [{ 
+      src: this.music?.hlsUrl , type: 'application/x-mpegURL' }]}, function onPlayerReady() {
+  })
+}
+
+ngAfterContentChecked(){
+  this.player.play();
+}
 }

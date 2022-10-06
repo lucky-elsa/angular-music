@@ -11,7 +11,7 @@
                 <section class="p-5 text-center" *ngIf="isWait">
                     <img src="../../../assets/imgs/1487.gif" class="loading p-md-5">
                 </section>
-                <div class="search-results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()">
+                <div class="search-results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="1000" (scrolled)="onScroll()">
                     <table *ngIf="!isWait" class="table">
                         <tbody>
                             <tr *ngFor="let item of categoryData;trackBy: trackByFn; let i = index">

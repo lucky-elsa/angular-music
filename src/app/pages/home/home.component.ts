@@ -54,6 +54,7 @@ export class HomeComponent implements OnInit,OnDestroy  {
   }
 
   sendData(item: MusicModel){
+    // use behavior subject to transfer data between components
     this.data.update(item);
     this.data.changeBarStatus();
   }
@@ -87,6 +88,7 @@ export class HomeComponent implements OnInit,OnDestroy  {
 
 
   ngOnDestroy(): void {
+    //unsubscribe to subscribed observables
     if (this.suggestedSubscription) {
       this.suggestedSubscription.unsubscribe();
     }
